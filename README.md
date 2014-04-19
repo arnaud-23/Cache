@@ -68,7 +68,7 @@ $cache->save($id, $data);
 $data = $cache->fetch($id, $namespaceId);
 ```
 
-### Invalidate cache
+### Cache invalidation
 ```php
 $cache->invalidate($namespaceId);
 ```
