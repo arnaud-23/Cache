@@ -100,7 +100,7 @@ class CacheProviderFactoryImplTest extends \PHPUnit_Framework_TestCase
      */
     public function Redis_Make_ReturnRedis()
     {
-        $this->cacheProvider = $this->cacheProviderFactory->make(CacheProviderType::REDIS, new RedisStub());
+        $this->cacheProvider = $this->cacheProviderFactory->make(CacheProviderType::REDIS, new RedisSpy());
         $this->assertInstanceOf(self::REDIS_CLASS, $this->cacheProvider);
     }
 

@@ -9,7 +9,7 @@ use Doctrine\Common\Cache\RedisCache;
 use OC\Cache\Cache\CacheBuilderImpl;
 use OC\Tests\Cache\CacheProvider\MemcachedStub;
 use OC\Tests\Cache\CacheProvider\MemcacheStub;
-use OC\Tests\Cache\CacheProvider\RedisStub;
+use OC\Tests\Cache\CacheProvider\RedisSpy;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -73,7 +73,7 @@ class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
     public function WithRedisType_Build_ReturnRedis()
     {
         $redisCache = new RedisCache();
-        $redisCache->setRedis(new RedisStub());
+        $redisCache->setRedis(new RedisSpy());
         $cache = CacheBuilderImpl::create()
             ->withCacheProvider($redisCache)
             ->build();
