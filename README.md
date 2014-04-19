@@ -16,7 +16,6 @@ Create the following `composer.json` file and run the `php composer.phar install
     }
 }
 ```
-
 ```php
 <?php
 require 'vendor/autoload.php';
@@ -25,19 +24,16 @@ use OC\Cache\Cache;
 
 //do things
 ```
-
 <a name="install-nocomposer"/>
 
 ## Usage
 ### Instantiation
-
 OC\Cache needs a DoctrineCacheProvider to be instantiate.
-```
+```php
 $cacheProvider = new ArrayCache();
 
 $cache = new Cache($cacheProvider);
 ```
-
 A Cache builder can be use.
 ```php
 // Default builder, build a cache using ArrayCache Provider
