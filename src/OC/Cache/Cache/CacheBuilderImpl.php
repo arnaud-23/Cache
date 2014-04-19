@@ -2,9 +2,8 @@
 
 namespace OC\Cache\Cache;
 
-use OC\Cache\CacheProvider\CacheProviderFactory;
-use OC\Cache\CacheProvider\CacheProviderType;
-use OC\Cache\Cache\Exception\ServerShouldNotBeNullException;
+use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\Common\Cache\CacheProvider;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -12,24 +11,9 @@ use OC\Cache\Cache\Exception\ServerShouldNotBeNullException;
 class CacheBuilderImpl implements CacheBuilder
 {
     /**
-     * @var CacheProviderFactory
-     */
-    private $cacheProviderFactory;
-
-    /**
-     * @var mixed
-     */
-    private $server;
-
-    /**
      * @var Cache
      */
     private $cache;
-
-    /**
-     * @var string
-     */
-    private $cacheType;
 
     /**
      * @var int
@@ -39,19 +23,17 @@ class CacheBuilderImpl implements CacheBuilder
     /**
      * @return CacheBuilder
      */
-    public function create($cacheType = CacheProviderType::ARRAY_CACHE)
+    public static function create()
     {
-        $this->cacheType = $cacheType;
-
-        return $this;
+        return new CacheBuilderImpl();
     }
 
     /**
      * @return CacheBuilder
      */
-    public function withServer($server)
+    public function withCacheProvider(CacheProvider $cacheProvider)
     {
-        $this->server = $server;
+        $this->cache = new CacheImpl($cacheProvider);
 
         return $this;
     }
@@ -71,52 +53,14 @@ class CacheBuilderImpl implements CacheBuilder
      */
     public function build()
     {
-        switch ($this->cacheType) {
-            case CacheProviderType::MEMCACHE:
-                if (null === $this->server) {
-                    throw new ServerShouldNotBeNullException();
-                }
-                $cacheProvider = $this->cacheProviderFactory->make(
-                    CacheProviderType::MEMCACHE,
-                    $this->server
-                );
-                break;
-            case CacheProviderType::MEMCACHED:
-                if (null === $this->server) {
-                    throw new ServerShouldNotBeNullException();
-                }
-                $cacheProvider = $this->cacheProviderFactory->make(
-                    CacheProviderType::MEMCACHED,
-                    $this->server
-                );
-                break;
-            case CacheProviderType::REDIS:
-                if (null === $this->server) {
-                    throw new ServerShouldNotBeNullException();
-                }
-                $cacheProvider = $this->cacheProviderFactory->make(
-                    CacheProviderType::REDIS,
-                    $this->server
-                );
-                break;
-            case CacheProviderType::ARRAY_CACHE:
-            default:
-                $cacheProvider = $this->cacheProviderFactory->make(
-                    CacheProviderType::ARRAY_CACHE
-                );
-                break;
+        if (null === $this->cache) {
+            $this->cache = new CacheImpl(new ArrayCache());
         }
-        $this->cache = new CacheImpl($cacheProvider);
+
         if (null !== $this->defaultLifetime) {
             $this->cache->setDefaultLifetime($this->defaultLifetime);
         }
 
         return $this->cache;
     }
-
-    public function setCacheProviderFactory(CacheProviderFactory $cacheProviderFactory)
-    {
-        $this->cacheProviderFactory = $cacheProviderFactory;
-    }
-
 }
