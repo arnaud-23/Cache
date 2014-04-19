@@ -2,7 +2,7 @@
 
 namespace OC\Cache\Cache;
 
-use OC\Cache\Cache\CacheProvider\CacheProviderType;
+use Doctrine\Common\Cache\CacheProvider;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -12,12 +12,12 @@ interface CacheBuilder
     /**
      * @return CacheBuilder
      */
-    public function create($cacheType = CacheProviderType::ARRAY_CACHE);
+    public static function create();
 
     /**
      * @return CacheBuilder
      */
-    public function withServer($server);
+    public function withCacheProvider(CacheProvider $cacheProvider);
 
     /**
      * @return CacheBuilder

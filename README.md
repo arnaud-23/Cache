@@ -44,17 +44,12 @@ $cache = CacheBuilder::create()
     ->build();
 
 // Using a CacheProvider
-$cache = CacheBuilder::create(CacheProviderType::REDIS)
+$cache = CacheBuilder::create()
     ->withCacheProvider($redisCache)
     ->build();
 
-// Using a server
-$cache = CacheBuilder::create(CacheProviderType::REDIS)
-    ->withServer($redis)
-    ->build();
-
 // Optional default lifetime
-$cache = CacheBuilder::create(CacheProviderType::REDIS)
+$cache = CacheBuilder::create()
     ->withCacheProvider($redisCache)
     ->withDefaultLifetime(300)
     ->build();
