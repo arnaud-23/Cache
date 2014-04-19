@@ -1,6 +1,6 @@
 <?php
 
-namespace OC\Cache\Cache\CacheProvider;
+namespace OC\Cache\CacheProvider;
 
 use OC\Cache\CacheProvider\Exception\InvalidCacheProviderTypeException;
 use OC\Cache\CacheProvider\Exception\InvalidCacheServerException;

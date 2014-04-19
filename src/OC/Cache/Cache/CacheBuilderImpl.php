@@ -2,8 +2,8 @@
 
 namespace OC\Cache\Cache;
 
-use OC\Cache\Cache\CacheProvider\CacheProviderFactory;
-use OC\Cache\Cache\CacheProvider\CacheProviderType;
+use OC\Cache\CacheProvider\CacheProviderFactory;
+use OC\Cache\CacheProvider\CacheProviderType;
 use OC\Cache\Cache\Exception\ServerShouldNotBeNullException;
 
 /**

@@ -4,8 +4,8 @@ namespace OC\Tests\Cache\Cache;
 
 use OC\Cache\Cache\CacheBuilder;
 use OC\Cache\Cache\CacheBuilderImpl;
-use OC\Cache\Cache\CacheProvider\CacheProviderFactoryImpl;
-use OC\Cache\Cache\CacheProvider\CacheProviderType;
+use OC\Cache\CacheProvider\CacheProviderFactoryImpl;
+use OC\Cache\CacheProvider\CacheProviderType;
 use OC\Tests\Cache\CacheProvider\MemcachedStub;
 use OC\Tests\Cache\CacheProvider\MemcacheStub;
 use OC\Tests\Cache\CacheProvider\RedisStub;

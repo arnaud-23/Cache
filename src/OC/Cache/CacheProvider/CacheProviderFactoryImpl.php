@@ -1,6 +1,6 @@
 <?php
 
-namespace OC\Cache\Cache\CacheProvider;
+namespace OC\Cache\CacheProvider;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\MemcacheCache;

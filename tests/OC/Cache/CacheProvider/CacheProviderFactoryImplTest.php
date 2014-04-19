@@ -3,9 +3,9 @@
 namespace OC\Tests\Cache\CacheProvider;
 
 use Doctrine\Common\Cache\CacheProvider;
-use OC\Cache\Cache\CacheProvider\CacheProviderFactory;
-use OC\Cache\Cache\CacheProvider\CacheProviderFactoryImpl;
-use OC\Cache\Cache\CacheProvider\CacheProviderType;
+use OC\Cache\CacheProvider\CacheProviderFactory;
+use OC\Cache\CacheProvider\CacheProviderFactoryImpl;
+use OC\Cache\CacheProvider\CacheProviderType;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

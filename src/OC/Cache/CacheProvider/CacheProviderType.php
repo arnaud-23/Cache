@@ -1,6 +1,6 @@
 <?php
 
-namespace OC\Cache\Cache\CacheProvider;
+namespace OC\Cache\CacheProvider;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
