@@ -28,7 +28,7 @@ use OC\Cache\Cache;
 
 ## Usage
 ### Instantiation
-OC\Cache needs a DoctrineCacheProvider to be instantiate.
+OC Cache needs a Doctrine CacheProvider to be instantiate.
 ```php
 $cacheProvider = new ArrayCache();
 
