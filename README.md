@@ -1,4 +1,7 @@
 # Cache
+[![Build Status](https://travis-ci.org/OpenClassrooms/Cache.svg?branch=master)](https://travis-ci.org/OpenClassrooms/Cache)
+
+
 Cache adds features to Doctrine Cache implementation
 - Default lifetime
 - Fetch with a namespace
