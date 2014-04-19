@@ -1,0 +1,29 @@
+{
+    "name": "oc/cache",
+    "description": "Cache library that extends Doctrine\\Cache capabilities",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "OpenClassrooms",
+            "email": "technique@openclassrooms.com"
+        },
+        {
+            "name": "Romain Kuzniak",
+            "email": "romain.kuzniak@openclassrooms.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OC\\": ["src/OC/", "tests/OC/"]
+        }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/cache": "~1",
+        "nesbot/carbon": "1.8.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
+    }
+}
