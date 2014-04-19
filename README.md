@@ -12,7 +12,7 @@ Create the following `composer.json` file and run the `php composer.phar install
 ```json
 {
     "require": {
-        "OC/Cache": "*"
+        "oc/cache": "*"
     }
 }
 ```
@@ -28,7 +28,7 @@ use OC\Cache\Cache;
 
 ## Usage
 ### Instantiation
-OC\Cache needs a DoctrineCacheProvider to be instantiate.
+OC Cache needs a Doctrine CacheProvider to be instantiate.
 ```php
 $cacheProvider = new ArrayCache();
 
@@ -68,7 +68,7 @@ $cache->save($id, $data);
 $data = $cache->fetch($id, $namespaceId);
 ```
 
-### Invalidate cache
+### Cache invalidation
 ```php
 $cache->invalidate($namespaceId);
 ```
