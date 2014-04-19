@@ -12,7 +12,7 @@ Create the following `composer.json` file and run the `php composer.phar install
 ```json
 {
     "require": {
-        "OC/Cache": "*"
+        "oc/cache": "*"
     }
 }
 ```
