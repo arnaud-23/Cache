@@ -1,5 +1,5 @@
 {
-    "name": "oc/cache",
+    "name": "OpenClassrooms/cache",
     "description": "Cache library that extends Doctrine\\Cache capabilities",
     "minimum-stability": "stable",
     "license": "MIT",
@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "OC\\": ["src/OC/", "tests/OC/"]
+            "OpenClassrooms\\": ["src/OpenClassrooms/", "tests/OpenClassrooms/"]
         }
     },
     "require": {
