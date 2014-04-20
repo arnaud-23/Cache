@@ -1,5 +1,5 @@
 {
-    "name": "OpenClassrooms/cache",
+    "name": "openclassrooms/cache",
     "description": "Cache library that extends Doctrine\\Cache capabilities",
     "minimum-stability": "stable",
     "license": "MIT",
