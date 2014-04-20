@@ -4,6 +4,7 @@ namespace OC\Tests\Cache\CacheProvider;
 
 use OC\Cache\CacheProvider\CacheProviderType;
 use OC\Cache\CacheServer\Redis;
+use OC\Tests\Cache\CacheServer\RedisSpy;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -22,7 +23,7 @@ class RedisCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function BuildWithoutHost_ThrowException()
     {
-        RedisCacheBuilderStub::create(CacheProviderType::REDIS)->build();
+        CacheBuilderMock::create(CacheProviderType::REDIS)->build();
     }
 
     /**
@@ -30,7 +31,7 @@ class RedisCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function BuildWithOnlyHost_ReturnRedisCache()
     {
-        $redisCache = RedisCacheBuilderStub::create(CacheProviderType::REDIS)
+        $redisCache = CacheBuilderMock::create(CacheProviderType::REDIS)
             ->withHost(self::EXPECTED_HOST)
             ->build();
 
@@ -46,7 +47,7 @@ class RedisCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function Build_ReturnRedisCache()
     {
-        $redisCache = RedisCacheBuilderStub::create(CacheProviderType::REDIS)
+        $redisCache = CacheBuilderMock::create(CacheProviderType::REDIS)
             ->withHost(self::EXPECTED_HOST)
             ->withPort(self::EXPECTED_PORT)
             ->withTimeout(self::EXPECTED_TIMEOUT)

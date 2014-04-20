@@ -5,11 +5,11 @@ namespace OC\Cache\CacheServer;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-final class Redis
+final class Memcache
 {
-    const DEFAULT_PORT = 6379;
+    const DEFAULT_PORT = 11211;
 
-    const DEFAULT_TIMEOUT = 0.0;
+    const DEFAULT_TIMEOUT = 1;
 
     /** @codeCoverageIgnore */
     private function __construct()

@@ -7,5 +7,5 @@ namespace OC\Cache\CacheProvider\Exception;
  */
 class HostShouldBeProvidedException extends \Exception
 {
-    
+
 }

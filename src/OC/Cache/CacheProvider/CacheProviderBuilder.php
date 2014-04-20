@@ -8,7 +8,8 @@ use Doctrine\Common\Cache\MemcacheCache;
 use Doctrine\Common\Cache\MemcachedCache;
 use Doctrine\Common\Cache\RedisCache;
 use OC\Cache\CacheProvider\Exception\HostShouldBeProvidedException;
-use OC\Cache\CacheProvider\Exception\InvalidCacheProviderTypeException;
+use OC\Cache\CacheServer\Memcache;
+use OC\Cache\CacheServer\Memcached;
 use OC\Cache\CacheServer\Redis;
 
 /**
@@ -81,24 +82,16 @@ abstract class CacheProviderBuilder
     }
 
     /**
-     * @return RedisCache
+     * @return ArrayCache|MemcacheCache|MemcachedCache|RedisCache
      */
     public function build()
     {
-        switch ($this->cacheProviderType) {
-            case CacheProviderType::MEMCACHE:
-                $this->buildMemcacheCache();
-                break;
-            case CacheProviderType::MEMCACHED:
-                $this->buildMemcachedCache();
-                break;
-            case CacheProviderType::REDIS:
-                $this->buildRedisCache();
-                break;
-            case CacheProviderType::ARRAY_CACHE:
-                break;
-            default:
-                throw new InvalidCacheProviderTypeException();
+        if (CacheProviderType::MEMCACHE === $this->cacheProviderType) {
+            $this->buildMemcacheCache();
+        } elseif (CacheProviderType::MEMCACHED === $this->cacheProviderType) {
+            $this->buildMemcachedCache();
+        } elseif (CacheProviderType::REDIS === $this->cacheProviderType) {
+            $this->buildRedisCache();
         }
 
         return $this->cacheProvider;
@@ -110,7 +103,10 @@ abstract class CacheProviderBuilder
             throw new HostShouldBeProvidedException();
         }
         if (null === $this->port) {
-            $this->port = 11211;
+            $this->port = Memcache::DEFAULT_PORT;
+        }
+        if (null === $this->timeout) {
+            $this->timeout = Memcache::DEFAULT_TIMEOUT;
         }
         $this->server->addserver($this->host, $this->port, null, null, $this->timeout);
         $this->cacheProvider->setMemcache($this->server);
@@ -122,7 +118,7 @@ abstract class CacheProviderBuilder
             throw new HostShouldBeProvidedException();
         }
         if (null === $this->port) {
-            $this->port = 11211;
+            $this->port = Memcached::DEFAULT_PORT;
         }
         $this->server->addserver($this->host, $this->port);
         $this->cacheProvider->setMemcached($this->server);

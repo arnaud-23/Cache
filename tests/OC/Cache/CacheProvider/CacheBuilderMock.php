@@ -1,17 +1,23 @@
 <?php
 
-namespace OC\Cache\CacheProvider;
+namespace OC\Tests\Cache\CacheProvider;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\MemcacheCache;
 use Doctrine\Common\Cache\MemcachedCache;
 use Doctrine\Common\Cache\RedisCache;
+use OC\Cache\CacheProvider\CacheProviderBuilder;
+use OC\Cache\CacheProvider\CacheProviderBuilderImpl;
+use OC\Cache\CacheProvider\CacheProviderType;
 use OC\Cache\CacheProvider\Exception\InvalidCacheProviderTypeException;
+use OC\Tests\Cache\CacheServer\MemcachedSpy;
+use OC\Tests\Cache\CacheServer\MemcacheSpy;
+use OC\Tests\Cache\CacheServer\RedisSpy;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class CacheProviderBuilderImpl extends CacheProviderBuilder
+class CacheBuilderMock extends CacheProviderBuilderImpl
 {
     protected function __construct($cacheProviderType)
     {
@@ -19,15 +25,15 @@ class CacheProviderBuilderImpl extends CacheProviderBuilder
         switch ($this->cacheProviderType) {
             case CacheProviderType::MEMCACHE:
                 $this->cacheProvider = new MemcacheCache();
-                $this->server = new \Memcache();
+                $this->server = new MemcacheSpy();
                 break;
             case CacheProviderType::MEMCACHED:
                 $this->cacheProvider = new MemcachedCache();
-                $this->server = new \Memcached();
+                $this->server = new MemcachedSpy();
                 break;
             case CacheProviderType::REDIS:
                 $this->cacheProvider = new RedisCache();
-                $this->server = new \Redis();
+                $this->server = new RedisSpy();
                 break;
             case CacheProviderType::ARRAY_CACHE:
                 $this->cacheProvider = new ArrayCache();
@@ -38,10 +44,10 @@ class CacheProviderBuilderImpl extends CacheProviderBuilder
     }
 
     /**
-     * @return CacheProviderBuilderImpl
+     * @return CacheProviderBuilder
      */
     public static function create($cacheProviderType)
     {
-        return new CacheProviderBuilderImpl($cacheProviderType);
+        return new CacheBuilderMock($cacheProviderType);
     }
 }

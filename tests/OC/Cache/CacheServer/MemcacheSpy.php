@@ -1,11 +1,11 @@
 <?php
 
-namespace OC\Tests\Cache\CacheProvider;
+namespace OC\Tests\Cache\CacheServer;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class RedisSpy extends \Redis
+class MemcacheSpy extends \Memcache
 {
     /**
      * @var string
@@ -22,17 +22,12 @@ class RedisSpy extends \Redis
      */
     public $timeout;
 
-    public function connect($host, $port = 6379, $timeout = 0.0)
+    public function addserver ($host, $port = 11211, $persistent = null, $weight = null, $timeout = null, $retry_interval = null, $status = null, callable $failure_callback = null, $timeoutms = null)
     {
         $this->host = $host;
         $this->port = $port;
         $this->timeout = $timeout;
 
-        return true;
-    }
-
-    public function setOption($name, $value)
-    {
         return true;
     }
 
