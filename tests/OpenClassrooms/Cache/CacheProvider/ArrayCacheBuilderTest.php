@@ -7,14 +7,14 @@ use OpenClassrooms\Cache\CacheProvider\CacheProviderType;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ArrayCacheBuilderTest extends \PHPUnit_Framework_TestCase
+class ArrayCacheBuilderTest extends AbstractCacheProviderBuilderTest
 {
     /**
      * @test
      */
     public function Build()
     {
-        $cacheProvider = CacheBuilderMock::create(CacheProviderType::ARRAY_CACHE)
+        $cacheProvider = $this->cacheProviderBuilder->create(CacheProviderType::ARRAY_CACHE)
             ->build();
         $this->assertInstanceOf('Doctrine\Common\Cache\ArrayCache', $cacheProvider);
     }

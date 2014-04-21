@@ -6,6 +6,7 @@ use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\MemcacheCache;
 use Doctrine\Common\Cache\MemcachedCache;
 use Doctrine\Common\Cache\RedisCache;
+use OpenClassrooms\Cache\Cache\CacheBuilder;
 use OpenClassrooms\Cache\Cache\CacheBuilderImpl;
 use OpenClassrooms\Tests\Cache\CacheServer\MemcachedSpy;
 use OpenClassrooms\Tests\Cache\CacheServer\MemcacheSpy;
@@ -19,12 +20,16 @@ class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
     const EXPECTED_DEFAULT_LIFETIME = 1000;
 
     /**
+     * @var CacheBuilder
+     */
+    private $cacheBuilder;
+
+    /**
      * @test
      */
     public function WithoutType_Build_ReturnArrayCache()
     {
-        $cache = CacheBuilderImpl::create()
-            ->build();
+        $cache = $this->cacheBuilder->build();
         $this->assertAttributeInstanceOf('Doctrine\Common\Cache\ArrayCache', 'cache', $cache);
     }
 
@@ -33,7 +38,7 @@ class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
      */
     public function WithArrayCacheType_Build_ReturnArrayCache()
     {
-        $cache = CacheBuilderImpl::create()
+        $cache = $this->cacheBuilder
             ->withCacheProvider(new ArrayCache())
             ->build();
         $this->assertAttributeInstanceOf('Doctrine\Common\Cache\ArrayCache', 'cache', $cache);
@@ -47,7 +52,7 @@ class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
         $memcacheCache = new MemcacheCache();
         $memcacheCache->setMemcache(new MemcacheSpy());
 
-        $cache = CacheBuilderImpl::create()
+        $cache = $this->cacheBuilder
             ->withCacheProvider($memcacheCache)
             ->build();
         $this->assertAttributeInstanceOf('Doctrine\Common\Cache\MemcacheCache', 'cache', $cache);
@@ -61,7 +66,7 @@ class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
         $memcachedCache = new MemcachedCache();
         $memcachedCache->setMemcached(new MemcachedSpy());
 
-        $cache = CacheBuilderImpl::create()
+        $cache = $this->cacheBuilder
             ->withCacheProvider($memcachedCache)
             ->build();
         $this->assertAttributeInstanceOf('Doctrine\Common\Cache\MemcachedCache', 'cache', $cache);
@@ -74,7 +79,7 @@ class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
     {
         $redisCache = new RedisCache();
         $redisCache->setRedis(new RedisSpy());
-        $cache = CacheBuilderImpl::create()
+        $cache = $this->cacheBuilder
             ->withCacheProvider($redisCache)
             ->build();
         $this->assertAttributeInstanceOf('Doctrine\Common\Cache\RedisCache', 'cache', $cache);
@@ -85,9 +90,15 @@ class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
      */
     public function WithDefaultLifetime_Make_ReturnDefaultLifetime()
     {
-        $cache = CacheBuilderImpl::create()
+        $cache = $this->cacheBuilder
             ->withDefaultLifeTime(self::EXPECTED_DEFAULT_LIFETIME)
             ->build();
         $this->assertAttributeEquals(self::EXPECTED_DEFAULT_LIFETIME, 'defaultLifetime', $cache);
     }
+
+    protected function setUp()
+    {
+        $this->cacheBuilder = new CacheBuilderImpl();
+    }
+
 }

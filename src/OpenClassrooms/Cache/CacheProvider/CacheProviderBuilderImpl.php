@@ -13,7 +13,10 @@ use OpenClassrooms\Cache\CacheProvider\Exception\InvalidCacheProviderTypeExcepti
  */
 class CacheProviderBuilderImpl extends CacheProviderBuilder
 {
-    protected function __construct($cacheProviderType)
+    /**
+     * @return CacheProviderBuilderImpl
+     */
+    public function create($cacheProviderType)
     {
         $this->cacheProviderType = $cacheProviderType;
         switch ($this->cacheProviderType) {
@@ -35,13 +38,7 @@ class CacheProviderBuilderImpl extends CacheProviderBuilder
             default:
                 throw new InvalidCacheProviderTypeException();
         }
-    }
 
-    /**
-     * @return CacheProviderBuilderImpl
-     */
-    public static function create($cacheProviderType)
-    {
-        return new CacheProviderBuilderImpl($cacheProviderType);
+        return $this;
     }
 }
