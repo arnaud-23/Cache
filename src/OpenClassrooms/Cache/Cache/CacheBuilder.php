@@ -12,11 +12,6 @@ interface CacheBuilder
     /**
      * @return CacheBuilder
      */
-    public static function create();
-
-    /**
-     * @return CacheBuilder
-     */
     public function withCacheProvider(CacheProvider $cacheProvider);
 
     /**

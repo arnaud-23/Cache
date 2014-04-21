@@ -48,6 +48,12 @@ abstract class CacheProviderBuilder
     protected $timeout;
 
     /**
+     * @return CacheProviderBuilderImpl
+     * @codeCoverageIgnore
+     */
+    abstract public function create($cacheProviderType);
+
+    /**
      * @return CacheProviderBuilder
      */
     public function withHost($host)

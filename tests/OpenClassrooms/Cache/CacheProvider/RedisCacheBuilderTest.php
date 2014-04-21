@@ -9,7 +9,7 @@ use OpenClassrooms\Tests\Cache\CacheServer\RedisSpy;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class RedisCacheBuilderTest extends \PHPUnit_Framework_TestCase
+class RedisCacheBuilderTest extends AbstractCacheProviderBuilderTest
 {
     const EXPECTED_HOST = '127.0.0.1';
 
@@ -23,7 +23,7 @@ class RedisCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function BuildWithoutHost_ThrowException()
     {
-        CacheBuilderMock::create(CacheProviderType::REDIS)->build();
+        $this->cacheProviderBuilder->create(CacheProviderType::REDIS)->build();
     }
 
     /**
@@ -31,7 +31,7 @@ class RedisCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function BuildWithOnlyHost_ReturnRedisCache()
     {
-        $redisCache = CacheBuilderMock::create(CacheProviderType::REDIS)
+        $redisCache = $this->cacheProviderBuilder->create(CacheProviderType::REDIS)
             ->withHost(self::EXPECTED_HOST)
             ->build();
 
@@ -47,7 +47,7 @@ class RedisCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function Build_ReturnRedisCache()
     {
-        $redisCache = CacheBuilderMock::create(CacheProviderType::REDIS)
+        $redisCache = $this->cacheProviderBuilder->create(CacheProviderType::REDIS)
             ->withHost(self::EXPECTED_HOST)
             ->withPort(self::EXPECTED_PORT)
             ->withTimeout(self::EXPECTED_TIMEOUT)

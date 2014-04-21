@@ -6,6 +6,7 @@ Cache adds features to Doctrine Cache implementation
 - Default lifetime
 - Fetch with a namespace
 - Cache invalidation through namespace strategy
+- CacheProvider Builder
 
 ## Installation
 The easiest way to install Cache is via [composer](http://getcomposer.org/).
@@ -37,19 +38,18 @@ $cacheProvider = new ArrayCache();
 
 $cache = new Cache($cacheProvider);
 ```
-A Cache builder can be use.
+A Cache builder can be used.
 ```php
 // Default builder, build a cache using ArrayCache Provider
-$cache = CacheBuilder::create()
-    ->build();
+$cache = new CacheBuilderImpl()->build();
 
 // Using a CacheProvider
-$cache = CacheBuilder::create()
+$cache = new CacheBuilderImpl()
     ->withCacheProvider($redisCache)
     ->build();
 
 // Optional default lifetime
-$cache = CacheBuilder::create()
+$cache = new CacheBuilderImpl()
     ->withCacheProvider($redisCache)
     ->withDefaultLifetime(300)
     ->build();
@@ -69,4 +69,37 @@ $data = $cache->fetch($id, $namespaceId);
 ### Cache invalidation
 ```php
 $cache->invalidate($namespaceId);
+```
+### CacheProvider Builder
+The library provides a CacheProvider Builder
+
+```php
+// Memcache
+$cacheProvider = new CacheProviderBuilderImpl()
+    ->create(CacheProviderType::MEMCACHE)
+    ->withHost('127.0.0.1')
+    ->withPort(11211) // Default 11211
+    ->withTimeout(1) // Default 1
+    ->build();
+
+// Memcached
+$cacheProvider = new CacheProviderBuilderImpl()
+    ->create(CacheProviderType::MEMCACHED)
+    ->withHost('127.0.0.1')
+    ->withPort(11211) // Default 11211
+    ->build();
+
+// Redis
+$cacheProvider = new CacheProviderBuilderImpl()
+    ->create(CacheProviderType::REDIS)
+    ->withHost('127.0.0.1')
+    ->withPort(6379) // Default 6379
+    ->withTimeout(0.0) // Default 0.0
+    ->build();
+
+// Array
+$cacheProvider = new CacheProviderBuilderImpl()
+    ->create(CacheProviderType::ARRAY_CACHE)
+    ->build();
+
 ```

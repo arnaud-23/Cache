@@ -19,7 +19,10 @@ use OpenClassrooms\Tests\Cache\CacheServer\RedisSpy;
  */
 class CacheBuilderMock extends CacheProviderBuilderImpl
 {
-    protected function __construct($cacheProviderType)
+    /**
+     * @return CacheProviderBuilder
+     */
+    public function create($cacheProviderType)
     {
         $this->cacheProviderType = $cacheProviderType;
         switch ($this->cacheProviderType) {
@@ -41,13 +44,7 @@ class CacheBuilderMock extends CacheProviderBuilderImpl
             default:
                 throw new InvalidCacheProviderTypeException();
         }
-    }
 
-    /**
-     * @return CacheProviderBuilder
-     */
-    public static function create($cacheProviderType)
-    {
-        return new CacheBuilderMock($cacheProviderType);
+        return $this;
     }
 }

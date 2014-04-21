@@ -23,14 +23,6 @@ class CacheBuilderImpl implements CacheBuilder
     /**
      * @return CacheBuilder
      */
-    public static function create()
-    {
-        return new CacheBuilderImpl();
-    }
-
-    /**
-     * @return CacheBuilder
-     */
     public function withCacheProvider(CacheProvider $cacheProvider)
     {
         $this->cache = new CacheImpl($cacheProvider);

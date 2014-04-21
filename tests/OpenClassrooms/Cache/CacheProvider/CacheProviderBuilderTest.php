@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\Tests\Cache\CacheProvider;
 
+use OpenClassrooms\Cache\CacheProvider\CacheProviderBuilder;
 use OpenClassrooms\Cache\CacheProvider\CacheProviderBuilderImpl;
 use OpenClassrooms\Cache\CacheProvider\CacheProviderType;
 
@@ -13,12 +14,17 @@ class CacheProviderBuilderTest extends \PHPUnit_Framework_TestCase
     const UNKNOWN_PROVIDER_TYPE = 'Unknown type';
 
     /**
+     * @var CacheProviderBuilder
+     */
+    protected $cacheProviderBuilder;
+
+    /**
      * @test
      * @expectedException \OpenClassrooms\Cache\CacheProvider\Exception\InvalidCacheProviderTypeException
      */
     public function CreateWithUnknownType_ThrowException()
     {
-        CacheProviderBuilderImpl::create(self::UNKNOWN_PROVIDER_TYPE);
+        $this->cacheProviderBuilder->create(self::UNKNOWN_PROVIDER_TYPE);
     }
 
     /**
@@ -26,7 +32,7 @@ class CacheProviderBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function CreateMemcache_ReturnMemcacheCacheBuilderImpl()
     {
-        $builder = CacheProviderBuilderImpl::create(CacheProviderType::MEMCACHE);
+        $builder = $this->cacheProviderBuilder->create(CacheProviderType::MEMCACHE);
         $this->assertAttributeInstanceOf(
             'Doctrine\Common\Cache\MemcacheCache',
             'cacheProvider',
@@ -40,7 +46,7 @@ class CacheProviderBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function CreateMemcached_ReturnMemcacheCacheBuilderImpl()
     {
-        $builder = CacheProviderBuilderImpl::create(CacheProviderType::MEMCACHED);
+        $builder = $this->cacheProviderBuilder->create(CacheProviderType::MEMCACHED);
         $this->assertAttributeInstanceOf(
             'Doctrine\Common\Cache\MemcachedCache',
             'cacheProvider',
@@ -54,7 +60,7 @@ class CacheProviderBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function CreateRedis_ReturnRedisCacheBuilderImpl()
     {
-        $builder = CacheProviderBuilderImpl::create(CacheProviderType::REDIS);
+        $builder = $this->cacheProviderBuilder->create(CacheProviderType::REDIS);
         $this->assertAttributeInstanceOf(
             'Doctrine\Common\Cache\RedisCache',
             'cacheProvider',
@@ -68,7 +74,7 @@ class CacheProviderBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function CreateArrayCache_ReturnArrayCacheBuilderImpl()
     {
-        $builder = CacheProviderBuilderImpl::create(CacheProviderType::ARRAY_CACHE);
+        $builder = $this->cacheProviderBuilder->create(CacheProviderType::ARRAY_CACHE);
         $this->assertAttributeInstanceOf(
             'Doctrine\Common\Cache\ArrayCache',
             'cacheProvider',
@@ -76,4 +82,10 @@ class CacheProviderBuilderTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertAttributeEmpty('server', $builder);
     }
+
+    protected function setUp()
+    {
+        $this->cacheProviderBuilder = new CacheProviderBuilderImpl();
+    }
+
 }

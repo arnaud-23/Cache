@@ -9,7 +9,7 @@ use OpenClassrooms\Tests\Cache\CacheServer\MemcachedSpy;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class MemcachedCacheBuilderTest extends \PHPUnit_Framework_TestCase
+class MemcachedCacheBuilderTest extends AbstractCacheProviderBuilderTest
 {
     const EXPECTED_HOST = '127.0.0.1';
 
@@ -21,7 +21,7 @@ class MemcachedCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function BuildWithoutHost_ThrowException()
     {
-        CacheBuilderMock::create(CacheProviderType::MEMCACHED)->build();
+        $this->cacheProviderBuilder->create(CacheProviderType::MEMCACHED)->build();
     }
 
     /**
@@ -29,7 +29,7 @@ class MemcachedCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function BuildWithOnlyHost_ReturnMemcachedCache()
     {
-        $memcachedCache = CacheBuilderMock::create(CacheProviderType::MEMCACHED)
+        $memcachedCache = $this->cacheProviderBuilder->create(CacheProviderType::MEMCACHED)
             ->withHost(self::EXPECTED_HOST)
             ->build();
 
@@ -44,7 +44,7 @@ class MemcachedCacheBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function Build_ReturnMemcachedCache()
     {
-        $memcachedCache = CacheBuilderMock::create(CacheProviderType::MEMCACHED)
+        $memcachedCache = $this->cacheProviderBuilder->create(CacheProviderType::MEMCACHED)
             ->withHost(self::EXPECTED_HOST)
             ->withPort(self::EXPECTED_PORT)
             ->build();
