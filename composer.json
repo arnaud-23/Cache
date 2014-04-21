@@ -17,12 +17,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "OpenClassrooms\\": "src/OpenClassrooms/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "OpenClassrooms\\": "tests/OpenClassrooms/"
+            "OpenClassrooms\\": ["src/OpenClassrooms/", "tests/OpenClassrooms/"]
         }
     },
     "require": {
