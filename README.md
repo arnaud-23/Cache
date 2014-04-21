@@ -63,7 +63,7 @@ $cache->save($id, $data);
 
 ### Fetch with namespace
 ```php
-$data = $cache->fetch($id, $namespaceId);
+$data = $cache->fetchWithNamespace($id, $namespaceId);
 ```
 
 ### Cache invalidation
