@@ -14,7 +14,7 @@
 
     <testsuites>
         <testsuite name="Cache Test Suite">
-            <directory>../tests/</directory>
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
