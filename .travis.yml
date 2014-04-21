@@ -10,6 +10,7 @@ php:
 before_script:
   - composer self-update
   - composer install --no-scripts --no-interaction --dev
-  - phpenv config-add ./tests/travis.ini
+  - composer dump-autoload -o
+  - phpenv config-add ./tests/php.ini
 
 script: phpunit --coverage-text
