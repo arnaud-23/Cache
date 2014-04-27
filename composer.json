@@ -17,7 +17,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "OpenClassrooms\\Cache\\": "src/"
+            "OpenClassrooms\\": "src/"
         }
     },
     "autoload-dev": {
