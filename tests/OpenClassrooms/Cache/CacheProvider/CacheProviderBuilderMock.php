@@ -17,7 +17,7 @@ use OpenClassrooms\Tests\Cache\CacheServer\RedisSpy;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class CacheBuilderMock extends CacheProviderBuilderImpl
+class CacheProviderBuilderMock extends CacheProviderBuilderImpl
 {
     /**
      * @return CacheProviderBuilder

@@ -16,7 +16,7 @@ abstract class AbstractCacheProviderBuilderTest extends \PHPUnit_Framework_TestC
 
     protected function setUp()
     {
-        $this->cacheProviderBuilder = new CacheBuilderMock();
+        $this->cacheProviderBuilder = new CacheProviderBuilderMock();
     }
 
 }
