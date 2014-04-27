@@ -7,13 +7,13 @@ namespace OpenClassrooms\Cache\CacheProvider;
  */
 final class CacheProviderType
 {
-    const ARRAY_CACHE = 'ArrayCache';
+    const ARRAY_CACHE = 'arrayCache';
 
-    const MEMCACHE = 'Memcache';
+    const MEMCACHE = 'memcache';
 
-    const MEMCACHED = 'Memcached';
+    const MEMCACHED = 'memcached';
 
-    const REDIS = 'Redis';
+    const REDIS = 'redis';
 
     /** @codeCoverageIgnore */
     private function __construct()
