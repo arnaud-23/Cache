@@ -2,6 +2,7 @@
     "name": "openclassrooms/cache",
     "description": "Cache library that extends Doctrine\\Cache capabilities",
     "type": "library",
+    "target-dir": "OpenClassrooms/Cache",
     "keywords": ["cache"],
     "minimum-stability": "stable",
     "license": "MIT",
@@ -31,5 +32,10 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
