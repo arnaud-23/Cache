@@ -16,13 +16,13 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "OpenClassrooms\\": "src/"
+        "psr-4": {
+            "OpenClassrooms\\": "src/OpenClassrooms/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
-            "OpenClassrooms\\": "tests/"
+        "psr-4": {
+            "OpenClassrooms\\Tests\\": "tests/OpenClassrooms/"
         }
     },
     "require": {
@@ -31,10 +31,5 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
     }
 }
