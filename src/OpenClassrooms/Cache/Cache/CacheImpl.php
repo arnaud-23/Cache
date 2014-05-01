@@ -12,12 +12,12 @@ class CacheImpl implements Cache
     /**
      * @var CacheProvider
      */
-    private $cache;
+    protected $cache;
 
     /**
      * @var int
      */
-    private $defaultLifetime = self::DEFAULT_LIFE_TIME;
+    protected $defaultLifetime = self::DEFAULT_LIFE_TIME;
 
     public function __construct(CacheProvider $cache)
     {
