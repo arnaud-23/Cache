@@ -15,6 +15,8 @@ class CacheTest extends \PHPUnit_Framework_TestCase
 
     const NAMESPACE_ID = CacheProviderSpy::NAMESPACE_ID;
 
+    const NAMESPACED_ID = CacheProviderSpy::NAMESPACED_ID;
+
     const NON_EXISTING_NAMESPACE_ID = -1;
 
     const DATA = CacheProviderSpy::DATA;
@@ -96,6 +98,32 @@ class CacheTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(CacheProviderSpy::SAVED, $saved);
         $this->assertTrue($this->cacheProviderSpy->saveHasBeenCalled);
         $this->assertEquals(self::ID, $this->cacheProviderSpy->id);
+        $this->assertEquals(self::DATA, $this->cacheProviderSpy->data);
+        $this->assertEquals(self::LIFE_TIME, $this->cacheProviderSpy->lifeTime);
+    }
+
+    /**
+     * @test
+     */
+    public function WithoutNamespaceId_SaveWithNamespace()
+    {
+        $saved = $this->cache->saveWithNamespace(self::ID, self::DATA);
+        $this->assertEquals(CacheProviderSpy::SAVED, $saved);
+        $this->assertTrue($this->cacheProviderSpy->saveHasBeenCalled);
+        $this->assertEquals(self::ID, $this->cacheProviderSpy->id);
+        $this->assertEquals(self::DATA, $this->cacheProviderSpy->data);
+        $this->assertEquals(Cache::DEFAULT_LIFE_TIME, $this->cacheProviderSpy->lifeTime);
+    }
+
+    /**
+     * @test
+     */
+    public function SaveWithNamespace()
+    {
+        $saved = $this->cache->saveWithNamespace(self::ID, self::DATA, self::NAMESPACE_ID, self::LIFE_TIME);
+        $this->assertEquals(CacheProviderSpy::SAVED, $saved);
+        $this->assertTrue($this->cacheProviderSpy->saveHasBeenCalled);
+        $this->assertEquals(self::NAMESPACED_ID, $this->cacheProviderSpy->id);
         $this->assertEquals(self::DATA, $this->cacheProviderSpy->data);
         $this->assertEquals(self::LIFE_TIME, $this->cacheProviderSpy->lifeTime);
     }
