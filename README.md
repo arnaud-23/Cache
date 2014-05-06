@@ -5,6 +5,7 @@
 Cache adds features to Doctrine Cache implementation
 - Default lifetime
 - Fetch with a namespace
+- Save with a namespace
 - Cache invalidation through namespace strategy
 - CacheProvider Builder
 
