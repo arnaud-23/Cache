@@ -66,6 +66,12 @@ $cache->save($id, $data);
 $data = $cache->fetchWithNamespace($id, $namespaceId);
 ```
 
+### Save with namespace
+```php
+// Namespace and life time can be null
+$data = $cache->saveWithNamespace($id, $data, $namespaceId, $lifeTime);
+```
+
 ### Cache invalidation
 ```php
 $cache->invalidate($namespaceId);
