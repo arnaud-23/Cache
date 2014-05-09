@@ -17,7 +17,7 @@ Create the following `composer.json` file and run the `php composer.phar install
 ```json
 {
     "require": {
-        "oc/cache": "*"
+        "openclassrooms/cache": "*"
     }
 }
 ```
@@ -25,7 +25,7 @@ Create the following `composer.json` file and run the `php composer.phar install
 <?php
 require 'vendor/autoload.php';
 
-use OC\Cache\Cache;
+use OpenClassrooms\Cache\Cache\Cache;
 
 //do things
 ```
