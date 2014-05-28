@@ -29,7 +29,8 @@ class MemcachedCacheBuilderTest extends AbstractCacheProviderBuilderTest
      */
     public function BuildWithOnlyHost_ReturnMemcachedCache()
     {
-        $memcachedCache = $this->cacheProviderBuilder->create(CacheProviderType::MEMCACHED)
+        $memcachedCache = $this->cacheProviderBuilder
+            ->create(CacheProviderType::MEMCACHED)
             ->withHost(self::EXPECTED_HOST)
             ->build();
 
@@ -44,7 +45,8 @@ class MemcachedCacheBuilderTest extends AbstractCacheProviderBuilderTest
      */
     public function Build_ReturnMemcachedCache()
     {
-        $memcachedCache = $this->cacheProviderBuilder->create(CacheProviderType::MEMCACHED)
+        $memcachedCache = $this->cacheProviderBuilder
+            ->create(CacheProviderType::MEMCACHED)
             ->withHost(self::EXPECTED_HOST)
             ->withPort(self::EXPECTED_PORT)
             ->build();

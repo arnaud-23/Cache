@@ -14,7 +14,8 @@ class ArrayCacheBuilderTest extends AbstractCacheProviderBuilderTest
      */
     public function Build()
     {
-        $cacheProvider = $this->cacheProviderBuilder->create(CacheProviderType::ARRAY_CACHE)
+        $cacheProvider = $this->cacheProviderBuilder
+            ->create(CacheProviderType::ARRAY_CACHE)
             ->build();
         $this->assertInstanceOf('Doctrine\Common\Cache\ArrayCache', $cacheProvider);
     }

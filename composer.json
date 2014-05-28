@@ -7,12 +7,12 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "OpenClassrooms",
-            "email": "technique@openclassrooms.com"
-        },
-        {
             "name": "Romain Kuzniak",
             "email": "romain.kuzniak@openclassrooms.com"
+        },
+        {
+            "name": "OpenClassrooms",
+            "email": "technique@openclassrooms.com"
         }
     ],
     "autoload": {
