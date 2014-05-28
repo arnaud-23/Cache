@@ -5,6 +5,7 @@
 Cache adds features to Doctrine Cache implementation
 - Default lifetime
 - Fetch with a namespace
+- Save with a namespace
 - Cache invalidation through namespace strategy
 - CacheProvider Builder
 
@@ -16,7 +17,7 @@ Create the following `composer.json` file and run the `php composer.phar install
 ```json
 {
     "require": {
-        "oc/cache": "*"
+        "openclassrooms/cache": "*"
     }
 }
 ```
@@ -24,7 +25,7 @@ Create the following `composer.json` file and run the `php composer.phar install
 <?php
 require 'vendor/autoload.php';
 
-use OC\Cache\Cache;
+use OpenClassrooms\Cache\Cache\Cache;
 
 //do things
 ```
@@ -64,6 +65,12 @@ $cache->save($id, $data);
 ### Fetch with namespace
 ```php
 $data = $cache->fetchWithNamespace($id, $namespaceId);
+```
+
+### Save with namespace
+```php
+// Namespace and life time can be null
+$data = $cache->saveWithNamespace($id, $data, $namespaceId, $lifeTime);
 ```
 
 ### Cache invalidation
