@@ -10,7 +10,7 @@
         processIsolation            = "true"
         stopOnFailure               = "false"
         syntaxCheck                 = "false"
-        bootstrap                   = "./tests/bootstrap.php">
+        bootstrap                   = "/../bootstrap.php">
 
     <logging>
         <log type="coverage-clover" target="/../build/logs/clover.xml"/>
