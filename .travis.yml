@@ -16,4 +16,4 @@ after_script:
     - php vendor/bin/coveralls -v
 
 script:
-    - ./vendor/bin/phpunit -c ./tests/travis/phpunit.travis.xml -v
+    - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
