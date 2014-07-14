@@ -7,7 +7,7 @@ use OpenClassrooms\Cache\CacheServer\Memcache;
 use OpenClassrooms\Tests\Cache\CacheServer\MemcacheSpy;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 class MemcacheCacheBuilderTest extends AbstractCacheProviderBuilderTest
 {

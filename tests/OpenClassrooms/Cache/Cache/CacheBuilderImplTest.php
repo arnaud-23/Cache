@@ -13,7 +13,7 @@ use OpenClassrooms\Tests\Cache\CacheServer\MemcacheSpy;
 use OpenClassrooms\Tests\Cache\CacheServer\RedisSpy;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 class CacheBuilderImplTest extends \PHPUnit_Framework_TestCase
 {

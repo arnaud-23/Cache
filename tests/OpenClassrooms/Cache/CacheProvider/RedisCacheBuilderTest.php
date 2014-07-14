@@ -7,7 +7,7 @@ use OpenClassrooms\Cache\CacheServer\Redis;
 use OpenClassrooms\Tests\Cache\CacheServer\RedisSpy;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 class RedisCacheBuilderTest extends AbstractCacheProviderBuilderTest
 {

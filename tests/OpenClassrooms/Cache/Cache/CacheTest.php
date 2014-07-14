@@ -7,7 +7,7 @@ use OpenClassrooms\Cache\Cache\CacheImpl;
 use OpenClassrooms\Tests\Cache\CacheProvider\CacheProviderSpy;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 class CacheTest extends \PHPUnit_Framework_TestCase
 {
