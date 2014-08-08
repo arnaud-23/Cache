@@ -93,7 +93,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase
     {
         $saved = $this->cache->save(self::ID, CacheProviderSpy::DATA);
 
-        $this->assertEquals(CacheProviderSpy::SAVED, $saved);
+        $this->assertTrue($saved);
         $this->assertTrue($this->cacheProviderSpy->saveHasBeenCalled);
         $this->assertEquals(self::ID, $this->cacheProviderSpy->id);
         $this->assertEquals(self::DATA, $this->cacheProviderSpy->data);
@@ -107,7 +107,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase
     {
         $saved = $this->cache->save(self::ID, self::DATA, self::LIFE_TIME);
 
-        $this->assertEquals(CacheProviderSpy::SAVED, $saved);
+        $this->assertTrue($saved);
         $this->assertTrue($this->cacheProviderSpy->saveHasBeenCalled);
         $this->assertEquals(self::ID, $this->cacheProviderSpy->id);
         $this->assertEquals(self::DATA, $this->cacheProviderSpy->data);
@@ -121,7 +121,7 @@ class CacheTest extends \PHPUnit_Framework_TestCase
     {
         $saved = $this->cache->saveWithNamespace(self::ID, self::DATA);
 
-        $this->assertEquals(CacheProviderSpy::SAVED, $saved);
+        $this->assertTrue($saved);
         $this->assertTrue($this->cacheProviderSpy->saveHasBeenCalled);
         $this->assertEquals(self::ID, $this->cacheProviderSpy->id);
         $this->assertEquals(self::DATA, $this->cacheProviderSpy->data);

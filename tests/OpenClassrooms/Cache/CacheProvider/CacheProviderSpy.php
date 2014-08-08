@@ -14,19 +14,11 @@ class CacheProviderSpy extends CacheProvider
 
     const NAMESPACE_ID = 'namespace_1';
 
-//    const NAMESPACE_ID_DATA = 3;
-
     const NAMESPACE_ID_VALUE = 'namespace';
 
     const DATA = 'data';
 
     const NAMESPACE_DATA = 'namespace data';
-
-    const CONTAINS = true;
-
-    const DELETED = true;
-
-    const SAVED = true;
 
     /**
      * @var ArrayCache
@@ -82,15 +74,6 @@ class CacheProviderSpy extends CacheProvider
         $this->id = $id;
 
         $data = $this->cacheProvider->fetch($id);
-//        if (self::ID == $id) {
-//            $data = self::DATA;
-//        } elseif (self::NAMESPACE_ID == $id) {
-//            $data = self::NAMESPACE_ID_DATA;
-//        } elseif (self::NAMESPACED_ID == $id) {
-//            $data = self::NAMESPACE_DATA;
-//        } else {
-//            $data = false;
-//        }
 
         return $data;
     }
