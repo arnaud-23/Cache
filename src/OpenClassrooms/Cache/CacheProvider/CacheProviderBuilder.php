@@ -142,6 +142,10 @@ abstract class CacheProviderBuilder
             $this->timeout = Redis::DEFAULT_TIMEOUT;
         }
         $this->server->connect($this->host, $this->port, $this->timeout);
-        $this->cacheProvider->setRedis($this->server);
+        $this->server->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP);
+        $ro = new \ReflectionObject($this->cacheProvider);
+        $redisProperty = $ro->getProperty('redis');
+        $redisProperty->setAccessible(true);
+        $redisProperty->setValue($this->cacheProvider, $this->server);
     }
 }
