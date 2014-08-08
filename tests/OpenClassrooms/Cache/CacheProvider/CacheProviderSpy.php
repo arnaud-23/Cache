@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\Tests\Cache\CacheProvider;
 
+use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\CacheProvider;
 
 /**
@@ -11,21 +12,18 @@ class CacheProviderSpy extends CacheProvider
 {
     const ID = 1;
 
-    const NAMESPACE_ID = 2;
+    const NAMESPACE_ID = 'namespace_1';
 
-    const NAMESPACE_ID_DATA = 3;
-
-    const NAMESPACED_ID = 31;
+    const NAMESPACE_ID_VALUE = 'namespace';
 
     const DATA = 'data';
 
     const NAMESPACE_DATA = 'namespace data';
 
-    const CONTAINS = true;
-
-    const DELETED = true;
-
-    const SAVED = true;
+    /**
+     * @var ArrayCache
+     */
+    public $cacheProvider;
 
     /**
      * @var bool
@@ -75,15 +73,7 @@ class CacheProviderSpy extends CacheProvider
         $this->callToFetchCount++;
         $this->id = $id;
 
-        if (self::ID == $id) {
-            $data = self::DATA;
-        } elseif (self::NAMESPACE_ID == $id) {
-            $data = self::NAMESPACE_ID_DATA;
-        } elseif (self::NAMESPACED_ID == $id) {
-            $data = self::NAMESPACE_DATA;
-        } else {
-            $data = false;
-        }
+        $data = $this->cacheProvider->fetch($id);
 
         return $data;
     }
@@ -93,7 +83,7 @@ class CacheProviderSpy extends CacheProvider
         $this->containsHasBeenCalled = true;
         $this->id = $id;
 
-        return self::CONTAINS;
+        return $this->cacheProvider->contains($id);
     }
 
     public function save($id, $data, $lifeTime = null)
@@ -103,7 +93,7 @@ class CacheProviderSpy extends CacheProvider
         $this->data = $data;
         $this->lifeTime = $lifeTime;
 
-        return self::SAVED;
+        return $this->cacheProvider->save($id, $data, $lifeTime);
     }
 
     public function delete($id)
@@ -111,14 +101,14 @@ class CacheProviderSpy extends CacheProvider
         $this->deleteHasBeenCalled = true;
         $this->id = $id;
 
-        return self::DELETED;
+        return $this->cacheProvider->delete($id);
     }
 
     public function getStats()
     {
         $this->getStatsHasBeenCalled = true;
 
-        return array();
+        return $this->cacheProvider->getStats();
     }
 
     /**
@@ -148,9 +138,9 @@ class CacheProviderSpy extends CacheProvider
     /**
      * Puts data into the cache.
      *
-     * @param string $id       The cache id.
-     * @param string $data     The cache entry/data.
-     * @param int    $lifeTime The lifetime. If != 0, sets a specific lifetime for this
+     * @param string $id         The cache id.
+     * @param string $data       The cache entry/data.
+     * @param int    $lifeTime   The lifetime. If != 0, sets a specific lifetime for this
      *                           cache entry (0 => infinite lifeTime).
      *
      * @return boolean TRUE if the entry was successfully stored in the cache, FALSE otherwise.
