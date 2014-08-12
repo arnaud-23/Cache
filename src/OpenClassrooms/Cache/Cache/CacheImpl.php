@@ -134,7 +134,7 @@ class CacheImpl implements Cache
         }
 
         // @codeCoverageIgnoreEnd
-        return $this->save($namespaceId, $namespaceId . '_' . $newNamespace, 0);
+        return $this->save($namespaceId, $namespaceId . '_' . $newNamespace .'_', 0);
     }
 
     /**
