@@ -13,7 +13,7 @@ use OpenClassrooms\Cache\CacheServer\Memcached;
 use OpenClassrooms\Cache\CacheServer\Redis;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 abstract class CacheProviderBuilder
 {

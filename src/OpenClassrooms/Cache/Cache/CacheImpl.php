@@ -5,7 +5,7 @@ namespace OpenClassrooms\Cache\Cache;
 use Doctrine\Common\Cache\CacheProvider;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 class CacheImpl implements Cache
 {

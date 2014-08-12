@@ -9,7 +9,7 @@ use Doctrine\Common\Cache\RedisCache;
 use OpenClassrooms\Cache\CacheProvider\Exception\InvalidCacheProviderTypeException;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 class CacheProviderBuilderImpl extends CacheProviderBuilder
 {

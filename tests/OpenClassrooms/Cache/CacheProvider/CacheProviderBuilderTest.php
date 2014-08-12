@@ -7,7 +7,7 @@ use OpenClassrooms\Cache\CacheProvider\CacheProviderBuilderImpl;
 use OpenClassrooms\Cache\CacheProvider\CacheProviderType;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 class CacheProviderBuilderTest extends \PHPUnit_Framework_TestCase
 {

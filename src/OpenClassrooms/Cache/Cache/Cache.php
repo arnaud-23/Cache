@@ -5,7 +5,7 @@ namespace OpenClassrooms\Cache\Cache;
 //use Doctrine\Common\Cache\Cache as BaseCache;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Romain Kuzniak <romain.kuzniak@turn-it-up.org>
  */
 interface Cache extends \Doctrine\Common\Cache\Cache
 {
