@@ -7,12 +7,12 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "OpenClassrooms",
-            "email": "technique@openclassrooms.com"
-        },
-        {
             "name": "Romain Kuzniak",
             "email": "romain.kuzniak@turn-it-up.org"
+        },
+        {
+            "name": "OpenClassrooms",
+            "email": "technique@openclassrooms.com"
         }
     ],
     "autoload": {
@@ -30,7 +30,8 @@
         "doctrine/cache": "~1"
     },
     "require-dev": {
-        "phpunit/phpunit": "~3.7"
+        "phpunit/phpunit": "~3.7",
+        "satooshi/php-coveralls": "dev-master"
     },
     "extra": {
         "branch-alias": {

@@ -1,6 +1,7 @@
 # Cache
 [![Build Status](https://travis-ci.org/OpenClassrooms/Cache.svg?branch=master)](https://travis-ci.org/OpenClassrooms/Cache)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/cb725585-b433-4a21-96aa-30a0148ecd9f/mini.png)](https://insight.sensiolabs.com/projects/cb725585-b433-4a21-96aa-30a0148ecd9f)
+[![Coverage Status](https://coveralls.io/repos/OpenClassrooms/Cache/badge.png?branch=master)](https://coveralls.io/r/OpenClassrooms/Cache?branch=master)
 
 Cache adds features to Doctrine Cache implementation
 - Default lifetime

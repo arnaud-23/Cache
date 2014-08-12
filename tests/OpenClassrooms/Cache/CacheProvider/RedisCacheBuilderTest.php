@@ -47,7 +47,8 @@ class RedisCacheBuilderTest extends AbstractCacheProviderBuilderTest
      */
     public function Build_ReturnRedisCache()
     {
-        $redisCache = $this->cacheProviderBuilder->create(CacheProviderType::REDIS)
+        $redisCache = $this->cacheProviderBuilder
+            ->create(CacheProviderType::REDIS)
             ->withHost(self::EXPECTED_HOST)
             ->withPort(self::EXPECTED_PORT)
             ->withTimeout(self::EXPECTED_TIMEOUT)
